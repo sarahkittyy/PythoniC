@@ -10,9 +10,6 @@ int main()
 	//Map each value to itself * 2.
 	x = py::map([](int v) { return v * 2; }, x);
 
-	//Iterate over the values & print them
-	for (auto &i : x)
-	{
-		std::cout << i << " ";
-	}   //Output: 0 2 4 6 8 10 12 .... 98
+	//Print the new mapped values.
+	std::cout << x;   //Output.. [0, 2, 4, 6, 8..]
 }
