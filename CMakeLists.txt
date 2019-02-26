@@ -7,33 +7,12 @@ add_library(PythoniC STATIC ${sources})
 set(CMAKE_CXX_FLAGS "-g -Wall -Wno-unused-variable")
 set(CMAKE_CXX_STANDARD 17)
 
-target_include_directories(
-	PythoniC
-	PUBLIC
-	"include"
+include_directories(
+	"${CMAKE_SOURCE_DIR}/include/"
 )
 
 # Get all subdirectories.
-macro(subdirlist result curdir)
-	file(GLOB children RELATIVE ${curdir} ${curdir}/*)
-	set(dirlist "")
-	foreach(child ${children})
-		if(IS_DIRECTORY ${curdir}/${child})
-			list(APPEND dirlist ${child})
-		endif()
-	endforeach()
-	set(${result} ${dirlist})
-endmacro()
-
-add_subdirectory(
-	"testing"
-)
-
-set(EXAMPLE_DIR "${PROJECT_SOURCE_DIR}/examples")
-
-subdirlist(EXAMPLE_DIRS ${EXAMPLE_DIR})
-foreach(dir ${EXAMPLE_DIRS})
-	add_subdirectory("${EXAMPLE_DIR}/${dir}")
-endforeach()
+add_subdirectory("testing")
+add_subdirectory("examples")
 
 set_target_properties(PythoniC PROPERTIES OUTPUT_NAME "pythonic")
