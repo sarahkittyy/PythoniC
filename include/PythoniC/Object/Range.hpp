@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cmath>   //std::ceil, std::round
 
 namespace PY
