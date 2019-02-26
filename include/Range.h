@@ -1,5 +1,7 @@
 #include <cmath>   //std::ceil, std::round
 
+namespace PY
+{
 /**
  * @brief An iterator over a range of numbers, similar to python's range().
  * 
@@ -149,3 +151,4 @@ private:
 //Some common typedefs.
 typedef Range<int> RangeInt;
 typedef Range<float> RangeFloat;
+}   // namespace py
