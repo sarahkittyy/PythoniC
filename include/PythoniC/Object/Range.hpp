@@ -17,6 +17,17 @@ class range
 {
 public:
 	/**
+	 * @brief Default Constructor.
+	 * 
+	 */
+	range()
+	{
+		//Just initialize the bare container.
+		data = new num_t[0];
+		iter = data;
+		size = 0;
+	}
+	/**
 	 * @brief Construct a new range object
 	 * 
 	 * @param start The starting value.
