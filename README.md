@@ -18,6 +18,10 @@ Link the pythonic library in build/ and `#include <PythoniC/PythoniC.hpp>`
 
 Run `doxygen` in the main source directory.
 
+## Speed
+
+Probably about the least optimized code on github, but it's readable!
+
 ## Never Asked Questions (N.A.Q)
 ---
 **Q** - Why can't I just use the `<algorithm>` header for like, everything?
