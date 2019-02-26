@@ -4,6 +4,8 @@
  * @brief An iterator over a range of numbers, similar to python's range().
  * 
  * @tparam num_t The numerical type to use. (int, float, double, long)
+ * 
+ * @example Ranges/Ranges.cpp
  */
 template <typename num_t>
 class Range
