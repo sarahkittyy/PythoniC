@@ -1,8 +1,9 @@
 #pragma once
 
-#include <cmath>   //std::ceil, std::round
+#include <algorithm>   //std::copy
+#include <cmath>	   //std::ceil, std::round
 
-namespace PY
+namespace py
 {
 /**
  * @brief An iterator over a range of numbers, similar to python's range().
@@ -12,17 +13,17 @@ namespace PY
  * @example Ranges/Ranges.cpp
  */
 template <typename num_t>
-class Range
+class range
 {
 public:
 	/**
-	 * @brief Construct a new Range object
+	 * @brief Construct a new range object
 	 * 
 	 * @param start The starting value.
 	 * @param end The value to iterate to.
 	 * @param inc The increment.
 	 */
-	Range(num_t start, num_t end, num_t inc = 1)
+	range(num_t start, num_t end, num_t inc = 1)
 	{
 		//Initalize.
 		init(start, end, inc);
@@ -33,17 +34,17 @@ public:
 	 * 
 	 * @param end The ending value.
 	 */
-	Range(num_t end)
+	range(num_t end)
 	{
 		//Initialize.
 		init(0, end, 1);
 	}
 
 	/**
-	 * @brief Delete the Range object.
+	 * @brief Delete the range object.
 	 * 
 	 */
-	~Range()
+	~range()
 	{
 		//Free resources.
 		delete[] data;
@@ -67,6 +68,36 @@ public:
 	num_t* end()
 	{
 		return &data[size];
+	}
+
+	/**
+	 * @brief Insert an element into the data.
+	 * 
+	 * @param pos The iterator position at which to insert the item.
+	 * @param item The item to insert.
+	 */
+	void insert(num_t* pos, num_t item)
+	{
+		//Get the index of pos.
+		int index = std::distance(begin(), pos);
+
+		//Allocate a new container to store the elements.
+		num_t* data_copy = new num_t[++size];
+		//Copy the beginning elements, up to the position to append to.
+		std::copy(begin(), pos, data_copy);
+		//Append the data element.
+		data_copy[index] = item;
+		//Copy the rest of the elements
+		std::copy(pos, end(), data_copy + index + 1);
+
+		//Re-allocate & copy data.
+		delete[] data;
+
+		data = new num_t[size];
+		std::copy(data_copy, &data_copy[size], data);
+
+		//Delete the copy.
+		delete[] data_copy;
 	}
 
 	/**
@@ -151,6 +182,6 @@ private:
 };
 
 //Some common typedefs.
-typedef Range<int> RangeInt;
-typedef Range<float> RangeFloat;
-}   // namespace py
+typedef range<int> intrange;
+typedef range<float> floatrange;
+}
