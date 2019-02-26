@@ -13,6 +13,8 @@ namespace py
  * @param container The container to iterate over.
  * 
  * @return IterableContainer The filtered container.
+ * 
+ * @example Filter/Filter.cpp
  */
 template <class IterableContainer, typename Predicate>
 IterableContainer filter(Predicate pred, IterableContainer container)
