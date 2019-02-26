@@ -29,3 +29,8 @@ vs
 Let me enjoy my python beauty in peace ok not having to type BS like `std::convoluted_semihemisphere_concavity_iterator` feels really nice.
 
 ---
+**Q** - Who is this aimed at?
+
+**A** - I made this for fun, and maybe one day a beginner programmer will come from python to C++, and maybe, just *maybe*, this library will help <3
+
+---
