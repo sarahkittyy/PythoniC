@@ -1,8 +1,9 @@
 #pragma once
 
 #include <algorithm>   //std::copy
-#include <cmath>	   //std::ceil, std::round
+#include <cmath>	   //std::round
 #include <stdexcept>   //std::out_of_range
+#include <string>	  //std::to_string
 #include <vector>	  //std::vector
 
 namespace py
@@ -127,4 +128,26 @@ private:
 //Some common typedefs.
 typedef range<int> intrange;
 typedef range<float> floatrange;
+}
+
+/**
+ * @brief std::ostream operator << overload for range<> class.
+ * 
+ */
+template <class T>
+std::ostream& operator<<(std::ostream& stream, py::range<T> range)
+{
+	//Output the start of the list.
+	stream << "[" << *range.begin();
+	//Iterate over the values in range.
+	for (auto& i : range)
+	{
+		stream << ", " << i;
+	}
+
+	//Output the end of the list.
+	stream << "]";
+
+	//Return the stream.
+	return stream;
 }
