@@ -17,12 +17,12 @@ namespace py
  * @example Filter/Filter.cpp
  */
 template <class IterableContainer, typename Predicate>
-IterableContainer filter(Predicate pred, IterableContainer container)
+IterableContainer filter(Predicate pred, const IterableContainer& container)
 {
 	//Create the return container.
 	IterableContainer filtered;
 	//Iterate over each item.
-	for (auto &item : container)
+	for (auto& item : container)
 	{
 		//If the predicate returns true...
 		if (pred(item))
