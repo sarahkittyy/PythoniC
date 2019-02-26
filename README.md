@@ -1,6 +1,6 @@
 # PythoniC
 
-The fluidity of python syntax, in C++.
+The fluidity of python, in C++.
 
 ## Building
 
@@ -17,3 +17,15 @@ Link the pythonic library in build/ and `#include <PythoniC/PythoniC.hpp>`
 ## Documentation
 
 Run `doxygen` in the main source directory.
+
+## Never Asked Questions (N.A.Q)
+---
+**Q** - Why can't I just use the `<algorithm>` header for like, everything?
+
+**A**: `std::transform(__INPUT____PREDICATE___BEGIN__ITERATOR_GCC_WHATEVER VALUE)`
+vs
+`py::map()`
+
+Let me enjoy my python beauty in peace ok not having to type BS like `std::convoluted_semihemisphere_concavity_iterator` feels really nice.
+
+---
