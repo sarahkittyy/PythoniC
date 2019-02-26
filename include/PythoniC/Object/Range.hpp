@@ -2,6 +2,7 @@
 
 #include <algorithm>   //std::copy
 #include <cmath>	   //std::round
+#include <iostream>	//std::ostream
 #include <stdexcept>   //std::out_of_range
 #include <string>	  //std::to_string
 #include <vector>	  //std::vector
@@ -138,11 +139,13 @@ template <class T>
 std::ostream& operator<<(std::ostream& stream, py::range<T> range)
 {
 	//Output the start of the list.
-	stream << "[" << *range.begin();
+	auto iter = range.begin();
+	stream << "[" << *iter;
+
 	//Iterate over the values in range.
-	for (auto& i : range)
+	while (++iter != range.end())
 	{
-		stream << ", " << i;
+		stream << ", " << *iter;
 	}
 
 	//Output the end of the list.
