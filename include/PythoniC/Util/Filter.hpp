@@ -17,7 +17,7 @@ namespace py
  * @example Filter/Filter.cpp
  */
 template <class IterableContainer, typename Predicate>
-IterableContainer filter(Predicate pred, const IterableContainer& container)
+IterableContainer filter(Predicate pred, IterableContainer& container)
 {
 	//Create the return container.
 	IterableContainer filtered;
