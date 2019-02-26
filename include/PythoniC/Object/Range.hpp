@@ -2,6 +2,8 @@
 
 #include <algorithm>   //std::copy
 #include <cmath>	   //std::ceil, std::round
+#include <stdexcept>   //std::out_of_range
+#include <vector>	  //std::vector
 
 namespace py
 {
@@ -22,10 +24,6 @@ public:
 	 */
 	range()
 	{
-		//Just initialize the bare container.
-		data = new num_t[0];
-		iter = data;
-		size = 0;
 	}
 	/**
 	 * @brief Construct a new range object
@@ -52,23 +50,14 @@ public:
 	}
 
 	/**
-	 * @brief Delete the range object.
-	 * 
-	 */
-	~range()
-	{
-		//Free resources.
-		delete[] data;
-	}
-
-	/**
 	 * @brief The beginning iterator. Points to the first element in the list.
 	 * 
 	 * @return num_t* A pointer to the beginning of the data.
 	 */
 	num_t* begin()
 	{
-		return &data[0];
+		return &*data.begin();
+		//Just initialize the bare container.
 	}
 
 	/**
@@ -78,7 +67,7 @@ public:
 	 */
 	num_t* end()
 	{
-		return &data[size];
+		return &*data.end();
 	}
 
 	/**
@@ -89,59 +78,25 @@ public:
 	 */
 	void insert(num_t* pos, num_t item)
 	{
-		//Get the index of pos.
-		int index = std::distance(begin(), pos);
-
-		//Allocate a new container to store the elements.
-		num_t* data_copy = new num_t[++size];
-		//Copy the beginning elements, up to the position to append to.
-		std::copy(begin(), pos, data_copy);
-		//Append the data element.
-		data_copy[index] = item;
-		//Copy the rest of the elements
-		std::copy(pos, end(), data_copy + index + 1);
-
-		//Re-allocate & copy data.
-		delete[] data;
-
-		data = new num_t[size];
-		std::copy(data_copy, &data_copy[size], data);
-
-		//Delete the copy.
-		delete[] data_copy;
+		data.insert(data.begin() + std::distance(begin(), pos), item);
 	}
 
 	/**
-	 * @brief The increment operator.
+	 * @brief Gets the number at the specified index.
 	 * 
-	 * @return num_t& A reference to the incremented value.
+	 * @param index The index to retrieve the number at.
+	 * @return num_t& The number.
 	 */
-	num_t&
-	operator++()
+	num_t& operator[](unsigned index)
 	{
-		//Increment the iterator.
-		iter++;
-
-		//Return this.
-		return *this;
-	}
-
-	/**
-	 * @brief The post-increment operator.
-	 * 
-	 * @return num_t The value before incrementing.
-	 */
-	num_t
-	operator++(int)
-	{
-		//Copy the iterator.
-		num_t temp(*iter);
-
-		//Increment the iterator.
-		operator++();
-
-		//Return our original copy.
-		return temp;
+		if (index >= data.size())
+		{
+			throw std::out_of_range("py::range - Operator [] index too large.");
+		}
+		else
+		{
+			return data[index];
+		}
 	}
 
 private:
@@ -154,22 +109,11 @@ private:
 	 */
 	void init(num_t start, num_t end, num_t inc)
 	{
-		//Get the length of the range data.
-		size = std::ceil((end - start) / inc);
-		//Allocate the values.
-		data = new num_t[size];
-		//Set the iterator to the beginning.
-		iter = data;
-
 		//Iterate over all values from start -> end and add them to the data.
-		for (num_t val   = start,
-				   index = 0;
-			 val < end;
-			 val += inc,
-				   index++)
+		for (num_t val = start; val < end; val += inc)
 		{
 			// Round the number to three decimal places.
-			data[(int)index] = std::round(val * 1000) / 1000;
+			data.push_back(std::round(val * 1000) / 1000);
 		}
 	}
 
@@ -177,19 +121,7 @@ private:
 	 * @brief The internal list of numbers to iterate over.
 	 * 
 	 */
-	num_t* data;
-
-	/**
-	 * @brief The length of the data.
-	 * 
-	 */
-	std::size_t size;
-
-	/**
-	 * @brief The iterator pointing to the current element in data.
-	 * 
-	 */
-	num_t* iter;
+	std::vector<num_t> data;
 };
 
 //Some common typedefs.
