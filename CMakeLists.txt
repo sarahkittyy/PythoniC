@@ -4,7 +4,7 @@ project(PythoniC)
 file(GLOB_RECURSE sources src/*.cpp)
 add_library(PythoniC STATIC ${sources})
 
-set(CMAKE_CXX_FLAGS "-Wall -Wno-unused-variable")
+set(CMAKE_CXX_FLAGS "-g -Wall -Wno-unused-variable")
 set(CMAKE_CXX_STANDARD 17)
 
 target_include_directories(
