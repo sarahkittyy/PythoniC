@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.13)
 project(PythoniC)
 
+# Programmer's use only, this should never be set.
+option(__BUILD_TESTING__ 
+"DO NOT TOGGLE" OFF)
+
+option(BUILD_EXAMPLES 
+"Builds the example programs inside examples/" ON)
+
 file(GLOB_RECURSE sources src/*.cpp)
 add_library(PythoniC STATIC ${sources})
 
@@ -11,8 +18,12 @@ include_directories(
 	"${CMAKE_SOURCE_DIR}/include/"
 )
 
-# Get all subdirectories.
-add_subdirectory("testing")
-add_subdirectory("examples")
+if(__BUILD_TESTING__)
+	add_subdirectory("testing")
+endif()
+
+if(BUILD_EXAMPLES)
+	add_subdirectory("examples")
+endif()
 
 set_target_properties(PythoniC PROPERTIES OUTPUT_NAME "pythonic")
