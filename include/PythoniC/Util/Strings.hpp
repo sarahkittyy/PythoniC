@@ -1,3 +1,4 @@
 #pragma once
 
-#include <PythoniC/Util/Strings/Split.hpp>
+#include "Strings/Split.hpp"
+#include "Strings/Strip.hpp"

@@ -1,4 +1,4 @@
-#include "PythoniC/Util/String/Split.hpp"
+#include "PythoniC/Util/Strings/Split.hpp"
 
 namespace py
 {
