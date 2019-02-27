@@ -14,16 +14,23 @@ make
 
 Link the pythonic library in build/ and `#include <PythoniC/PythoniC.hpp>`
 
+Alternatively, just include the headers you want. I.E. if you just want ranges, use `#include <PythoniC/Object/Range.hpp>`
+
+See `include/PythoniC.hpp` for 
+
 ## Features
 
 * Python 3's `range()`
+
 ```cpp
 for(auto i : py::range(10))
 {
-	//...i = 0, 1, 2, 3, ... 9 
+    //...i = 0, 1, 2, 3, ... 9 
 }
 ```
+
 * `map()`, `filter()`, and `reduce()`
+
 ```cpp
 //0, 1, 2, 3, 4, ... 9
 py::range list(10);
@@ -32,13 +39,40 @@ list = py::map([](int x) { return x * 2; }, list);
 //Output: 90
 std::cout << py::reduce([](int x, int y) { return x + y; }, list);
 ```
+
 * Python-based list splicing.
+
 ```cpp
 //0, 1, 2, ... 19
 py::range list(20);
  //Output: [19, 18, 17 ... 0]
 std::cout << list["::-1"];
 ```
+
+* High-level string manipulation.
+
+```cpp
+std::string str = "this is a string, hi!";
+auto split = py::string::split(str, ' ');
+for(auto &i : split)
+{
+    std::cout << i << "\n";
+}
+/*
+Output:
+
+this
+is
+a
+string,
+hi!
+*/
+```
+
+## TODO
+
+- More string manipulation (strip(), replace(), join()).
+- More ostream `operator<<()` overloads for common STL types.
 
 ## Documentation
 
@@ -49,6 +83,7 @@ Run `doxygen` in the main source directory.
 Probably about the least optimized code on github, but it's readable!
 
 ## Never Asked Questions (N.A.Q)
+
 ---
 **Q** - Why can't I just use the `<algorithm>` header for like, everything?
 
