@@ -7,6 +7,8 @@
 #include <string>	  //std::to_string
 #include <vector>	  //std::vector
 
+#include <PythoniC/Util/Splice.hpp>   //py::splice()
+
 namespace py
 {
 /**
@@ -111,6 +113,21 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Implentation of python's list splicing. Calls py::splice with the given index.
+	 * 
+	 * @param index The python-syntax splicing string
+	 * I.E: [start:end:inc]
+	 * 
+	 * @return range<num_t> A new integer range, with numbers from the splice.
+	 * 
+	 * @see Util/Splice.hpp
+	 */
+	range<num_t> operator[](std::string index)
+	{
+		return splice(*this, index);
+	}
+
 private:
 	/**
 	 * @brief Initializes the data with the given start, end, and increments.
@@ -119,7 +136,8 @@ private:
 	 * @param end The ending position.
 	 * @param inc How much to increment by per iteration.
 	 */
-	void init(num_t start, num_t end, num_t inc)
+	void
+	init(num_t start, num_t end, num_t inc)
 	{
 		//Iterate over all values from start -> end and add them to the data.
 		for (num_t val = start; val < end; val += inc)
