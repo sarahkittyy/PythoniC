@@ -24,7 +24,7 @@ namespace py
  * @example Reduce/Reduce.cpp
  */
 template <typename IterableContainer, typename Function>
-auto reduce(Function func, IterableContainer& container)
+auto reduce(Function func, IterableContainer container)
 {
 	//Get the first element.
 	auto first_elem = *container.begin();

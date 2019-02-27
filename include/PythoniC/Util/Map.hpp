@@ -22,7 +22,7 @@ namespace py
  * @example Map/Map.cpp
  */
 template <typename IterableContainer, typename Function>
-IterableContainer map(Function func, IterableContainer& container)
+IterableContainer map(Function func, IterableContainer container)
 {
 	//Create the new container.
 	IterableContainer filtered;

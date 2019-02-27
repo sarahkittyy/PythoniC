@@ -31,7 +31,7 @@ namespace py
  * @example Splice/Splice.cpp
  */
 template <typename IterableContainer>
-IterableContainer splice(IterableContainer& container,
+IterableContainer splice(IterableContainer container,
 						 std::string index)
 {
 	using std::array;
