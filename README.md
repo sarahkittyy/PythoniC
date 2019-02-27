@@ -20,7 +20,7 @@ See `include/PythoniC.hpp` for
 
 ## Features
 
-* Python 3's `range()`
+### Python 3's `range()`
 
 ```cpp
 for(auto i : py::range(10))
@@ -29,7 +29,7 @@ for(auto i : py::range(10))
 }
 ```
 
-* `map()`, `filter()`, and `reduce()`
+### `map()`, `filter()`, and `reduce()`
 
 ```cpp
 //0, 1, 2, 3, 4, ... 9
@@ -40,7 +40,7 @@ list = py::map([](int x) { return x * 2; }, list);
 std::cout << py::reduce([](int x, int y) { return x + y; }, list);
 ```
 
-* Python-based list splicing.
+### Python-based list splicing.
 
 ```cpp
 //0, 1, 2, ... 19
@@ -49,7 +49,7 @@ py::range list(20);
 std::cout << list["::-1"];
 ```
 
-* High-level string manipulation.
+### High-level string manipulation.
 
 ```cpp
 std::string str = "    this is a string, hi!   ";
