@@ -166,6 +166,14 @@ typedef range<float> floatrange;
 template <class T>
 std::ostream& operator<<(std::ostream& stream, py::range<T> range)
 {
+	//Assert the range has elements
+	if (range.size() == 0)
+	{
+		//Just print an empty list & return.
+		stream << "[]";
+		return stream;
+	}
+
 	//Output the start of the list.
 	auto iter = range.begin();
 	stream << "[" << *iter;
