@@ -56,7 +56,7 @@ Probably about the least optimized code on github, but it's readable!
 vs
 `py::map()`
 
-Let me enjoy my python beauty in peace ok not having to type BS like `std::convoluted_semihemisphere_concavity_iterator` feels really nice.
+Let me enjoy my python beauty in peace, OK? Not having to type BS like, `std::convoluted_semihemisphere_concavity_iterator` feels awfully nice.
 
 ---
 **Q** - Who is this aimed at?
