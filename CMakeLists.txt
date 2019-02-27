@@ -9,9 +9,7 @@ option(BUILD_EXAMPLES
 "Builds the example programs inside examples/" ON)
 
 file(GLOB_RECURSE sources src/*.cpp)
-if(sources NOT STREQUAL "")
-	add_library(PythoniC STATIC ${sources})
-endif()
+add_library(PythoniC STATIC ${sources})
 
 set(CMAKE_CXX_FLAGS "-g -Wall -Wno-unused-variable")
 set(CMAKE_CXX_STANDARD 17)
