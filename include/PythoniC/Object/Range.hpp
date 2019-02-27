@@ -84,6 +84,16 @@ public:
 	}
 
 	/**
+	 * @brief Get the size of the range.
+	 * 
+	 * @return std::size_t The size of the range.
+	 */
+	std::size_t size()
+	{
+		return data.size();
+	}
+
+	/**
 	 * @brief Gets the number at the specified index.
 	 * 
 	 * @param index The index to retrieve the number at.
