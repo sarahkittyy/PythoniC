@@ -88,9 +88,13 @@ IterableContainer splice(IterableContainer& container,
 	if (inc < 0)
 	{
 		int tmp = start;
+		start   = end;
 		//Inc/dec to account for endpoint in/exclusion
-		start = end - 1;
-		end   = tmp;
+		if (start == (int)container.size())
+		{
+			start--;
+		}
+		end = tmp - 1;
 	}
 
 	//Check to make sure the start and end aren't negative, and that inc isn't 0.
