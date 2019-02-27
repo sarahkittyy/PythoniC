@@ -52,26 +52,28 @@ std::cout << list["::-1"];
 * High-level string manipulation.
 
 ```cpp
-std::string str = "this is a string, hi!";
+std::string str = "    this is a string, hi!   ";
 auto split = py::string::split(str, ' ');
 for(auto &i : split)
 {
     std::cout << i << "\n";
 }
+std::cout << "Stripped: '" << py::string::strip(str) << "'";
 /*
 Output:
 
-this
+    this
 is
 a
 string,
-hi!
+hi!    
+Stripped: 'this is a string, hi!' 
 */
 ```
 
 ## TODO
 
-- More string manipulation (strip(), replace(), join()).
+- More string manipulation (replace(), join()).
 - More ostream `operator<<()` overloads for common STL types.
 
 ## Documentation
