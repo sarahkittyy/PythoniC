@@ -34,8 +34,9 @@ IterableContainer splice(IterableContainer& container,
 	using std::string;
 	using std::vector;
 	//First, validate the index.
-	regex index_validator(r "(-?\d*(:-?\d*){0,2})");
-	if (!regex_search(index, smatch, index_validator))
+	regex index_validator(R"(-?\d*(:-?\d*){0,2})");
+	smatch _;   //Unnecessary variable
+	if (!regex_search(index, _, index_validator))
 	{
 		throw std::out_of_range("py::splice() - Invalid splice \"" + index + "\".");
 	}
@@ -61,10 +62,10 @@ IterableContainer splice(IterableContainer& container,
 
 	//Check each splice index, and convert to an integer if possible.
 	vector<int> int_splices;
-	const int splice_defaults[3] = {0, container.size(), 1};   //Default splice values.
+	const int splice_defaults[3] = {0, (int)container.size(), 1};   //Default splice values.
 
 	//Iterate over each splice
-	for (int i = 0; i < splices.size(); ++i)
+	for (unsigned i = 0; i < splices.size(); ++i)
 	{
 		//If the splice is empty...
 		if (splices[i].size() == 0)
@@ -79,9 +80,18 @@ IterableContainer splice(IterableContainer& container,
 		}
 	}
 	//Grab the start, end, and inc values finally.
-	int start = int_splices[0];
-	int end   = int_splices[1];
+	int start = std::min(int_splices[0], int_splices[1]);
+	int end   = std::max(int_splices[0], int_splices[1]);
 	int inc   = int_splices[2];
+
+	//If the inc is less than 0, swap start & end.
+	if (inc < 0)
+	{
+		int tmp = start;
+		//Inc/dec to account for endpoint in/exclusion
+		start = end - 1;
+		end   = tmp;
+	}
 
 	//Check to make sure the start and end aren't negative, and that inc isn't 0.
 	if (start < 0 || end < 0)
