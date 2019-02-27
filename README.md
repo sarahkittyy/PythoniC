@@ -42,5 +42,3 @@ Let me enjoy my python beauty in peace ok not having to type BS like `std::convo
 **Q** - Why is the src/ dir so empty?
 
 **A** - Most of this library is just composed of template classes & template free functions, so not much can go in the sources.
-
-I keep one source, pythonic.cpp, so that CMake builds the library anyway (for future compatibility).
