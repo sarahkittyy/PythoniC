@@ -22,6 +22,8 @@ namespace py
  * @param container The container to splice.
  * @param index A string representing the splice.
  * @return IterableContainer A spliced version of the container.
+ * 
+ * @example Splice/Splice.cpp
  */
 template <typename IterableContainer>
 IterableContainer splice(IterableContainer& container,
