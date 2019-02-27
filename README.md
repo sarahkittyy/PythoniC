@@ -59,6 +59,9 @@ for(auto &i : split)
     std::cout << i << "\n";
 }
 std::cout << "Stripped: '" << py::string::strip(str) << "'";
+std::cout << "Replaced: '" 
+          << py::string::replace(str, '!', '?') 
+          << "'";
 /*
 Output:
 
@@ -68,12 +71,12 @@ a
 string,
 hi!    
 Stripped: 'this is a string, hi!' 
+Replaced: 'this is a string, hi?'
 */
 ```
 
 ## TODO
 
-- More string manipulation (replace(), join()).
 - More ostream `operator<<()` overloads for common STL types.
 
 ## Documentation
