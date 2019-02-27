@@ -6,6 +6,11 @@
 #include <string>   //std::string
 #include <vector>   //std::vector
 
+/**
+ * @file
+ * @brief Implementation of python's list splicing. 
+ * 
+ */
 namespace py
 {
 

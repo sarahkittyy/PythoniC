@@ -3,6 +3,11 @@
 #include <regex>	//std::regex_replace, std::regex
 #include <string>   //std::string
 
+/**
+ * @file
+ * @brief Python's family of strip() functions.
+ * 
+ */
 namespace py
 {
 namespace string

@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file
+ * @brief Python's filter() method. 
+ * 
+ */
 namespace py
 {
 

@@ -4,6 +4,11 @@
 #include <cctype>	  //std::tolower
 #include <string>	  //std::string
 
+/**
+ * @file
+ * @brief Python's str.replace() method. 
+ * 
+ */
 namespace py
 {
 namespace string

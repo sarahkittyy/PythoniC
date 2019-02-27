@@ -3,6 +3,11 @@
 #include <string>
 #include <vector>
 
+/**
+ * @file
+ * @brief Python's str.split() method.
+ * 
+ */
 namespace py
 {
 namespace string

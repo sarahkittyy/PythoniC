@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file
+ * @brief Python's reduce() method. 
+ * 
+ */
 namespace py
 {
 

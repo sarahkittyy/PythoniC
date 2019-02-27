@@ -3,6 +3,11 @@
 #include <sstream>   //std::stringstream
 #include <string>	//std::string
 
+/**
+ * @file
+ * @brief Python's str.join() method.
+ * 
+ */
 namespace py
 {
 namespace string
