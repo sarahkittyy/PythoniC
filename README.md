@@ -38,3 +38,9 @@ Let me enjoy my python beauty in peace ok not having to type BS like `std::convo
 **A** - I made this for fun, and maybe one day a beginner programmer will come from python to C++, and maybe, just *maybe*, this library will help <3
 
 ---
+
+**Q** - Why is the src/ dir so empty?
+
+**A** - Most of this library is just composed of template classes & template free functions, so not much can go in the sources.
+
+I keep one source, pythonic.cpp, so that CMake builds the library anyway (for future compatibility).
