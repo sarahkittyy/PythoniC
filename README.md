@@ -14,6 +14,32 @@ make
 
 Link the pythonic library in build/ and `#include <PythoniC/PythoniC.hpp>`
 
+## Features
+
+* Python 3's `range()`
+```cpp
+for(auto i : py::range(10))
+{
+	//...i = 0, 1, 2, 3, ... 9 
+}
+```
+* `map()`, `filter()`, and `reduce()`
+```cpp
+//0, 1, 2, 3, 4, ... 9
+py::range list(10);
+//0, 2, 4, 6, ... 18
+list = py::map([](int x) { return x * 2; }, list);
+//Output: 90
+std::cout << py::reduce([](int x, int y) { return x + y; }, list);
+```
+* Python-based list splicing.
+```cpp
+//0, 1, 2, ... 19
+py::range list(20);
+ //Output: [19, 18, 17 ... 0]
+std::cout << list["::-1"];
+```
+
 ## Documentation
 
 Run `doxygen` in the main source directory.
